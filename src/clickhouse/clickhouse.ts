@@ -9,7 +9,7 @@ class ClickHouseExt extends ClickHouse {
 
 	){
 		super({
-			url: `http://${url}`, // http://localhost:8123
+			url: 'http://' + url, // http://localhost:8123
 			port: 8123, // Port 9000 is for clickhouse-client program.
 			debug: debug,
 			basicAuth: {
@@ -25,8 +25,8 @@ class ClickHouseExt extends ClickHouse {
 				session_id                              : v4(),
 				session_timeout                         :  0,
 				output_format_json_quote_64bit_integers :  0,
-				enable_http_compression                 :  0,
-				database                                : '',
+				enable_http_compression                 :  0, // select * from system.query_log
+				database                                : '', // show tables from system
 				log_queries								:  0, // профилирование запросов, результат смотреть в system.log_queries
 				//max_execution_time: 300,
 				max_query_size: 10000000000000,
@@ -44,25 +44,11 @@ class ClickHouseExt extends ClickHouse {
 		});
 	}
 
-	query0(query: String, reqParams?: object): QueryCursor {
-		try {
-			clickhouse.sessionId = v4();
-			const resp = super.query(query, reqParams);
-			return resp
-		} catch(error:any){
-		}
-
-		return QueryCursor.prototype
-	}
-
 	query(query: String, reqParams?: object): QueryCursor {
 		try {
 			clickhouse.sessionId = v4();
-			const resp = super.query(query, reqParams);
-			return resp
-		} catch(error:any){
-			
-		}
+			return super.query(query, reqParams)
+		} catch(error:any){}
 
 		return QueryCursor.prototype
 	}

@@ -12,7 +12,7 @@
         "git submodule update": "git submodule update --init --recursive && git submodule foreach --recursive git pull origin main",
         "------------ pnpm ------------": "----------- pnpm ------------",
         "pnpm:add": "npx pnpm add -g pnpm",
-        "pnpm:add:package": "npx pnpm add -w nats",
+        "pnpm:add:package": "npx pnpm add -w jsontosql2",
         "pnpm:setup": "npx pnpm setup",
         "pnpm:update": "npx pnpm add -g pnpm",
         "pnpm:install": "npx pnpm install",
@@ -23,15 +23,19 @@
         "main": "ts-node -r tsconfig-paths/register src/main.ts"
     },
     "dependencies": {
+        "@types/uuid": "^9.0.1",
+        "clickhouse": "^2.6.0",
+        "jsontosql2": "^0.0.7",
         "safe-stable-stringify": "2.4.1",
         "ts-node": "^10.9.1",
-        "tslib": "^2.4.1"
+        "tslib": "^2.4.1",
+        "uuid": "^9.0.0"
     },
     "devDependencies": {
-        "arkit": "^1.6.4",
         "@jest/types": "29.4.2",
         "@types/jest": "29.4.0",
         "@types/node": "^18.11.18",
+        "arkit": "^1.6.4",
         "jest": "29.4.2",
         "jest-ts-auto-mock": "^2.1.0",
         "ts-auto-mock": "^3.6.4",
