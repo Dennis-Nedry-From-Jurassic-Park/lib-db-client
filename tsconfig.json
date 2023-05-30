@@ -73,7 +73,7 @@
     "**/tests/*.test.ts",
     "*.test.ts"
   ],
-  "include": ["packages", "shared"],
+  "include": ["src"],
   "paths": {
     "*": [
       "*",
