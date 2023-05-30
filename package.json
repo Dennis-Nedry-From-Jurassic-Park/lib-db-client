@@ -17,6 +17,7 @@
         "pnpm:update": "npx pnpm add -g pnpm",
         "pnpm:install": "npx pnpm install",
         "----------- docker -----------": "----------- docker -----------",
+        "build": "tsc -b",
         "lint": "eslint --color --fix --ext .ts,.js,.jsx packages/backend/apps/ms-src/src",
         "lint-q": "eslint --color --fix --quiet --ext .ts,.js,.jsx packages/backend/apps/ms-cron/src",
         "test": "jest",
