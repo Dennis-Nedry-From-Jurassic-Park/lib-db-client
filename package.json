@@ -18,7 +18,7 @@
         "pnpm:update": "npx pnpm add -g pnpm",
         "pnpm:install": "npx pnpm install",
         "----------- docker -----------": "----------- docker -----------",
-        "build": "tsc -b",
+        "build": "tsc -b .",
         "lint": "eslint --color --fix --ext .ts,.js,.jsx packages/backend/apps/ms-src/src",
         "lint-q": "eslint --color --fix --quiet --ext .ts,.js,.jsx packages/backend/apps/ms-cron/src",
         "test": "jest",
@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "@types/uuid": "^9.0.2",
+        "@types/node": "^20.4.2",
         "clickhouse": "^2.6.0",
         "jsontosql2": "^0.0.7",
         "safe-stable-stringify": "2.4.3",
