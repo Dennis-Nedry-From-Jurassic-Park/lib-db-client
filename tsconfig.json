@@ -28,7 +28,7 @@
     "incremental": true,                            /* Tells TypeScript to save information about the project graph from the last compilation to files stored on disk. This creates a series of .tsbuildinfo files in the same folder as your compilation output. */
     "importHelpers": true,                          /* Import emit helpers from 'tslib'. */
     "outDir": "dist",                               /* Redirect output structure to the directory. */
-                                     /* Base directory to resolve non-absolute module names. */
+    "baseUrl": ".",                                 /* Base directory to resolve non-absolute module names. */
     "emitDecoratorMetadata": true,                  /* Enables experimental support for emitting type metadata for decorators. */
     "experimentalDecorators": true,                 /* Enables experimental support for ES7 decorators. */
     "module": "CommonJS",                           /* Specify module code generation: 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
