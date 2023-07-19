@@ -1,7 +1,7 @@
 import {ClickHouse, QueryCursor} from "clickhouse";
 import {v4} from "uuid";
 
-class ClickHouseExt extends ClickHouse {
+export class ClickHouseExtended extends ClickHouse {
 	constructor(
 		url: string = 'localhost', // clickhouse
 		debug: boolean = false,
@@ -66,7 +66,7 @@ class ClickHouseExt extends ClickHouse {
 	};
 }
 
-const clickhouse = new ClickHouseExt();
-export const clickhouse_localhost = new ClickHouseExt('localhost', false, false);
+const clickhouse = new ClickHouseExtended();
+export const clickhouse_localhost = new ClickHouseExtended('localhost', false, false);
 
 export default clickhouse;
