@@ -45,8 +45,6 @@
     "types": [
       "node", "jest"
     ],
-    "typeRoots": [
-    ],
     "plugins": [
       {
         "transform": "ts-auto-mock/transformer",
