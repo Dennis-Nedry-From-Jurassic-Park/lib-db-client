@@ -13,7 +13,7 @@
         "------------ pnpm ------------": "----------- pnpm ------------",
         "pnpm:update-deps": "pnpm update --latest",
         "pnpm:add": "npx pnpm add -g pnpm",
-        "pnpm:add:package": "npx pnpm add -w jsontosql2",
+        "pnpm:add:package": "npx pnpm add -w @clickhouse/client",
         "pnpm:setup": "npx pnpm setup",
         "pnpm:update": "npx pnpm add -g pnpm",
         "pnpm:install": "npx pnpm install",
@@ -25,8 +25,9 @@
         "main": "ts-node -r tsconfig-paths/register src/main.ts"
     },
     "dependencies": {
-        "@types/uuid": "^9.0.2",
+        "@clickhouse/client": "0.2.0-beta1",
         "@types/node": "^20.4.2",
+        "@types/uuid": "^9.0.2",
         "clickhouse": "^2.6.0",
         "jsontosql2": "^0.0.7",
         "safe-stable-stringify": "2.4.3",
