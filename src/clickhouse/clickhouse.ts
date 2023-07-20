@@ -53,12 +53,21 @@ export class ClickHouseExtended extends ClickHouse {
 		return QueryCursor.prototype
 	}
 
+	isObject(obj:any): boolean {
+		return Object.prototype.toString.call(obj) === '[object Object]';
+	}
+
 	insert_rows(table: String, rows: any[], reqParams?: object): QueryCursor {
 		let query = `INSERT INTO ${table} (*) VALUES `
 		for(const row of rows) {
 			const values: any[] = Object.values(row);
 
 			query += "("
+
+			// if (Array.isArray(values) && this.isObject(values[0])) {
+			// 	values = data;
+			// 	isFirstElObject = true;
+			// }
 
 			for(const value of values) {
 				query += "'" + value + "',"
