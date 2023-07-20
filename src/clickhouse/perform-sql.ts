@@ -1,6 +1,6 @@
 const index = require('jsontosql2');
 
-const performSql = async (dbName = 'db', tableName: string, objects: any[]) => {
+const performSql = async (dbName = 'default', tableName: string, objects: any[]) => {
 	const collection = {
 		'name': `${dbName}.${tableName}`,
 		'data': objects
