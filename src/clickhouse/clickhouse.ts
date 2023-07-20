@@ -53,6 +53,29 @@ export class ClickHouseExtended extends ClickHouse {
 		return QueryCursor.prototype
 	}
 
+	insert_rows(table: String, rows: any[], reqParams?: object): QueryCursor {
+		let query = `INSERT INTO ${table} (*) VALUES `
+		for(const row of rows) {
+			const values: any[] = Object.values(row);
+
+			query += "("
+
+			for(const value of values) {
+				query += "'" + value + "',"
+			}
+			query = query.slice(0, -1)
+			query += "),"
+		}
+		query.slice(0, -1)
+		console.log(query);
+		try {
+			clickhouse.sessionId = v4();
+			return super.query(query, reqParams)
+		} catch(error:any){}
+
+		return QueryCursor.prototype
+	}
+
 	logQueries = async (queries:any[] = [1,2]) => {
 		clickhouse.sessionId = v4();
 		
