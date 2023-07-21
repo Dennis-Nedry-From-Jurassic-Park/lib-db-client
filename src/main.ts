@@ -46,6 +46,14 @@ async function insertData<T>(table: string, data: T[]) {
     })
 }
 
+export const q = async (query: string) => {
+    const resultSet = await clickhouse_beta.query({
+        query: query
+    })
+    const dataset = await resultSet.json()
+    console.table(dataset.data);
+}
+
 const main = async () => {
     // const resp = await clickhouse.query('select now()').toPromise();
     // console.log(resp);
@@ -60,22 +68,17 @@ const main = async () => {
     //     query: 'set flatten_nested=0;'
     // })
 
-    const resultSet2 = await clickhouse_beta.query({
-        query: `
+    //await q(`SELECT * FROM system.session_log LIMIT 3`)
+    await q(`SELECT query_id, query FROM system.processes LIMIT 3`)
+
+    await q(`
         SELECT name,value,changed
-    FROM system.settings
-    WHERE name LIKE '%flatten_nested%'
-        `
-    })
-    const dataset2 = await resultSet2.json()
-    console.table(dataset2.data);
+        FROM system.settings
+        WHERE name LIKE '%flatten_nested%'
+    `)
 
+    await q(`describe table atr_cex_tinkoff_investments_v2.orderbook`)
 
-    const resultSet3 = await clickhouse_beta.query({
-        query: `describe table atr_cex_tinkoff_investments_v2.orderbook`
-    })
-    const dataset3 = await resultSet3.json()
-    console.table(dataset3.data);
 
     //await insertData('atr_cex_tinkoff_investments_v2.orderbook', lob)
 //console.log(111);
@@ -88,7 +91,7 @@ const main = async () => {
 
 
     const resultSet = await clickhouse_beta.query({
-        query: 'select * from atr_cex_tinkoff_investments_v2.orderbook',
+        query: 'select count(*) from atr_cex_tinkoff_investments_v2.orderbook',
         format: 'JSONEachRow',
     })
     const dataset = await resultSet.json()
