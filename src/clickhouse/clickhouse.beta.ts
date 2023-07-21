@@ -6,12 +6,14 @@ export const createClickHouseClient = ({
                                            app,
                                            host,
                                            port,
+                                           session_id,
                                            debug,
                                            raw,
                                        }: {
     app?: string,
     host: string,
     port: number,
+    session_id: string,
     debug: boolean,
     raw: boolean,
 }): ClickHouseClient<Stream.Readable> => {
@@ -20,13 +22,13 @@ export const createClickHouseClient = ({
         application: app,
         username: 'default',
         password: '',
-        session_id: v4()
+        session_id: session_id
     })
 }
 // https://clickhouse.com/docs/en/integrations/language-clients/nodejs
 // TODO: Nested Types and Array(Tuple())
 export const clickhouse_beta: any = createClickHouseClient({
-    app: 'AR', host: 'localhost', port: 8123, debug: false, raw: false
+    app: 'AR', host: 'localhost', port: 8123, session_id: v4(), debug: false, raw: false
 })
 
 

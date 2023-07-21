@@ -1,1 +1,1 @@
-# db connectors clickhouse,
+# db connectors clickhouse

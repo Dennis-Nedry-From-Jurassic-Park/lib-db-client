@@ -23,10 +23,13 @@ const lob: any[] = [{
     fee: 0.5,
     diff: 0.4,
     midpoint: 0.1,
-    asks: [5, 10.5 , 7, 16.5 ],
-    bids: [5, 10.5 , 7, 16.5 ],
-    //asks: [{ quantity: 1, price: 0.5 }, { quantity: 6, price: 111.5 }],
-    //bids: [{ quantity: 1, price: 0.5 }, { quantity: 6, price: 111.5 }],
+    //asks: [5, 10.5 , 7, 16.5 ],
+    //
+    //bids: [5, 10.5 , 7, 16.5 ],
+    //bids: [[5, 10.5], [7, 16.5] ],
+    //asks: [[5, 10.5], [7, 16.5] ],
+    asks: [{ quantity: 1, price: 0.5 }, { quantity: 6, price: 111.5 }],
+    bids: [{ quantity: 1, price: 0.5 }, { quantity: 6, price: 111.5 }],
     message: 'err 1311111',
     figi: 'uuid00-1',
     isConsistent: 1,
@@ -52,16 +55,36 @@ const main = async () => {
     //
     // ).toPromise();
 
-    console.info(await clickhouse_beta.ping())
-
-    await insertData('atr_cex_tinkoff_investments_v2.orderbook', lob)
-
-    // await clickhouse_beta.insert({
-    //     table: 'atr_cex_tinkoff_investments_v2.orderbook',
-    //     // structure should match the desired format, JSONEachRow in this example
-    //     values: lob,
-    //     format: 'JSONEachRow',
+    //console.info(await clickhouse_beta.ping())
+    // await clickhouse_beta.exec({
+    //     query: 'set flatten_nested=0;'
     // })
+
+    const resultSet2 = await clickhouse_beta.query({
+        query: `
+        SELECT name,value,changed
+    FROM system.settings
+    WHERE name LIKE '%flatten_nested%'
+        `
+    })
+    const dataset2 = await resultSet2.json()
+    console.table(dataset2.data);
+
+
+    const resultSet3 = await clickhouse_beta.query({
+        query: `describe table atr_cex_tinkoff_investments_v2.orderbook`
+    })
+    const dataset3 = await resultSet3.json()
+    console.table(dataset3.data);
+
+    //await insertData('atr_cex_tinkoff_investments_v2.orderbook', lob)
+//console.log(111);
+    await clickhouse_beta.insert({
+        table: 'atr_cex_tinkoff_investments_v2.orderbook',
+        // structure should match the desired format, JSONEachRow in this example
+        values: lob,
+        format: 'JSONEachRow',
+    })
 
 
     const resultSet = await clickhouse_beta.query({
