@@ -22,7 +22,7 @@ export const createClickHouseClient = ({
         application: app,
         username: 'default',
         password: '',
-        session_id: session_id
+        //session_id: session_id
     })
 }
 // https://clickhouse.com/docs/en/integrations/language-clients/nodejs
