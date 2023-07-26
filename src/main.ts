@@ -68,6 +68,8 @@ const main = async () => {
     //     query: 'set flatten_nested=0;'
     // })
 
+    await clickhouse_beta.close()
+
     //await q(`SELECT * FROM system.session_log LIMIT 3`)
     await q(`SELECT query_id, query FROM system.processes LIMIT 3`)
 
@@ -97,5 +99,7 @@ const main = async () => {
     const dataset = await resultSet.json()
 
     console.log(dataset);
+
+    await clickhouse_beta.close()
 }
 main().catch(error => console.error(error));

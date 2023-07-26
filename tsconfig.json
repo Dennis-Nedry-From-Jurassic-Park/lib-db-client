@@ -27,7 +27,8 @@
     "isolatedModules": false,                       /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
     "incremental": true,                            /* Tells TypeScript to save information about the project graph from the last compilation to files stored on disk. This creates a series of .tsbuildinfo files in the same folder as your compilation output. */
     "importHelpers": true,                          /* Import emit helpers from 'tslib'. */
-    "outDir": "../../dist/shared/lib-db-client",                               /* Redirect output structure to the directory. */
+    //"outDir": "../../dist/shared/lib-db-client",                               /* Redirect output structure to the directory. */
+    "outDir": "./dist",                               /* Redirect output structure to the directory. */
     "baseUrl": ".",                                 /* Base directory to resolve non-absolute module names. */
     "emitDecoratorMetadata": true,                  /* Enables experimental support for emitting type metadata for decorators. */
     "experimentalDecorators": true,                 /* Enables experimental support for ES7 decorators. */
@@ -58,6 +59,7 @@
     "node_modules",
     "arch-diagramms",
     "dist",
+    "node_modules",
     "test",
     "build",
     "output",
@@ -67,5 +69,5 @@
     "**/tests/*.test.ts",
     "*.test.ts"
   ],
-  "include": ["src"]
+  "include": ["."]
 }
