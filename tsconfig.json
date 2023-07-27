@@ -7,6 +7,7 @@
     "checkJs": false,                               /* Report errors in .js files. */
     "composite": true,
     "declaration": true,                            /* Generates corresponding '.d.ts' file. */
+    "declarationMap": true,
     "diagnostics": false,
     "extendedDiagnostics": false,
     "esModuleInterop": false,                        /* create helpers __importStar и __importDefault to ensure compatibility with the Babel ecosystem and turn on allowSyntheticDefaultImports for compatibility with the type system */
@@ -29,7 +30,7 @@
     "importHelpers": true,                          /* Import emit helpers from 'tslib'. */
     //"outDir": "../../dist/shared/lib-db-client",                               /* Redirect output structure to the directory. */
     "outDir": "./dist",                               /* Redirect output structure to the directory. */
-    "baseUrl": ".",                                 /* Base directory to resolve non-absolute module names. */
+    //"baseUrl": ".",                                 /* Base directory to resolve non-absolute module names. */
     "emitDecoratorMetadata": true,                  /* Enables experimental support for emitting type metadata for decorators. */
     "experimentalDecorators": true,                 /* Enables experimental support for ES7 decorators. */
     "module": "CommonJS",                           /* Specify module code generation: 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
@@ -59,7 +60,6 @@
     "node_modules",
     "arch-diagramms",
     "dist",
-    "node_modules",
     "test",
     "build",
     "output",
