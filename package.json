@@ -3,9 +3,9 @@
     "version": "0.0.1",
     "private": true,
     "license": "MIT",
-    "main": "./dist/src/index.js",
-    "source": "./src/index.ts",
-    "types": "dist/src/index.d.ts",
+    "main": "./dist/index.js",
+    "source": "./index.ts",
+    "types": "./index.ts",
     "scripts": {
         "----------- arkit ----------": "---------- arkit ---------",
         "arkit": "npx arkit src/ -o arkit.svg",
