@@ -23,3 +23,10 @@
 //         console.log("url="+url)
 //         console.log(err)
 //     });
+
+
+
+// const key = `atr:cex:ti:logs:${ticker}:${ts}`
+// await client.set(key, JSON.stringify(mergedObj));
+// const value = await client.get(key);
+// await client.disconnect();
