@@ -25,6 +25,15 @@ export const createClickHouseClient = ({
         session_id: session_id
     })
 }
+// async insertData<T>(table: string, data: T[]) {
+//     const values = data.map((v, i) => ({...v, id: i + 1}))
+//     console.log(values);
+//     await this.clickhouse_beta.insert({
+//         table,
+//         values,
+//         format: 'JSONEachRow',
+//     })
+// }
 // https://clickhouse.com/docs/en/integrations/language-clients/nodejs
 // TODO: Nested Types and Array(Tuple())
 export const clickhouse_beta: any = createClickHouseClient({
