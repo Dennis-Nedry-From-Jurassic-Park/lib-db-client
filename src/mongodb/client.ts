@@ -7,6 +7,7 @@ import {emptySchema} from "./schema";
 export class MongoDbClient {
     private dbName: string
     private mongoUri: string
+    private mongoose: any
     private models: Map<string, any>
 
     constructor(
@@ -20,7 +21,7 @@ export class MongoDbClient {
 
     public static async connect(dbName: string,): Promise<MongoDbClient> {
         const mongoDbClient = new MongoDbClient(dbName)
-        await mongoose.connect(mongoDbClient.mongoUri, {
+        mongoDbClient.mongoose = await mongoose.connect(mongoDbClient.mongoUri, {
             dbName: mongoDbClient.dbName
         })
         return mongoDbClient
@@ -44,11 +45,11 @@ export class MongoDbClient {
         collectionName: string,
         schema: any = emptySchema
     ): Promise<any> {
-        return mongoose.model(collectionName, schema);
+        return this.mongoose.model(collectionName, schema);
     }
 
     async disconnect() {
-        mongoose.disconnect()
+        this.mongoose.disconnect()
     }
 
 }
