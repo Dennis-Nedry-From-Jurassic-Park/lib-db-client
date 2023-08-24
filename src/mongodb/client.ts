@@ -20,9 +20,9 @@ export class MongoDbClient {
 
     public static async connect(dbName: string,): Promise<MongoDbClient> {
         const mongoDbClient = new MongoDbClient(dbName)
-        mongoose.connect(mongoDbClient.mongoUri, {
+        await mongoose.connect(mongoDbClient.mongoUri, {
             dbName: mongoDbClient.dbName
-        }).catch(err => console.log(err));
+        })
         return mongoDbClient
     }
 
