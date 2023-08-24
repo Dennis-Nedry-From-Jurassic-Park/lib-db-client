@@ -8,6 +8,7 @@ export class MongoDbClient {
     private dbName: string
     private mongoUri: string
     private models: Map<string, any>
+
     constructor(
         dbName: string,
         mongoUri: string = Uri.localhost
@@ -15,10 +16,14 @@ export class MongoDbClient {
         this.dbName = dbName
         this.mongoUri = mongoUri
         this.models = new Map<string, any>()
+    }
 
-        mongoose.connect(this.mongoUri, {
-            dbName: this.dbName
+    public static async connect(dbName: string,): Promise<MongoDbClient | undefined> {
+        const mongoDbClient = new MongoDbClient(dbName)
+        mongoose.connect(mongoDbClient.mongoUri, {
+            dbName: mongoDbClient.dbName
         }).catch(err => console.log(err));
+        return mongoDbClient
     }
 
     async add_model(
@@ -34,6 +39,7 @@ export class MongoDbClient {
         return this.models.get(modelName)
 
     }
+
     async create_model(
         collectionName: string,
         schema: any = emptySchema
