@@ -18,7 +18,7 @@ export class MongoDbClient {
         this.models = new Map<string, any>()
     }
 
-    public static async connect(dbName: string,): Promise<MongoDbClient | undefined> {
+    public static async connect(dbName: string,): Promise<MongoDbClient> {
         const mongoDbClient = new MongoDbClient(dbName)
         mongoose.connect(mongoDbClient.mongoUri, {
             dbName: mongoDbClient.dbName
