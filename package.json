@@ -35,6 +35,7 @@
         "clickhouse": "^2.6.0",
         "jsontosql2": "^0.0.7",
         "mongodb": "^5.7.0",
+        "mongoose": "^7.4.3",
         "safe-stable-stringify": "2.4.3",
         "ts-node": "^10.9.1",
         "tslib": "^2.6.0",
