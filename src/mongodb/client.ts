@@ -21,6 +21,19 @@ export class MongoDbClient {
         }).catch(err => console.log(err));
     }
 
+    async add_model(
+        modelName: string,
+        collectionName: string,
+        schema: any = emptySchema
+    ) {
+        const model = await this.create_model(collectionName, schema)
+        this.models.set(modelName, model)
+    }
+
+    async get_model(modelName: string) {
+        return this.models.get(modelName)
+
+    }
     async create_model(
         collectionName: string,
         schema: any = emptySchema
