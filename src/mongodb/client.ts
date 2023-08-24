@@ -1,7 +1,7 @@
 import {Schema} from "mongoose";
 import * as mongoose from "mongoose";
 import {Uri} from "./uri";
-import {schema} from "./schema";
+import {emptySchema} from "./schema";
 
 
 export class MongoDbClient {
@@ -23,7 +23,7 @@ export class MongoDbClient {
 
     async create_model(
         collectionName: string,
-        schema: any = schema
+        schema: any = emptySchema
     ): Promise<any> {
         return mongoose.model(collectionName, schema);
     }
