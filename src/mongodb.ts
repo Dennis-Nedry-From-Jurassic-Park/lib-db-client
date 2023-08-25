@@ -1,5 +1,15 @@
 import {mongodb_client} from "./mongodb/mongodb";
+import {MongoDbClient} from "./mongodb/client";
 
+const exec2 = async () => {
+    const mongoDbClient: MongoDbClient = await MongoDbClient.connect('atr')
+    const modelName = 'historical_candles'
+    await mongoDbClient.add_model(modelName, 'imoex.marketdata.historical.candles')
+    const model: any = await mongoDbClient.get_model(modelName)
+    await model.insertMany([{ "a": 1}])
+    await mongoDbClient.disconnect()
+}
+exec2()
 const exec = async () => {
 
     await mongodb_client.connect().catch((err => console.log(err)));
@@ -70,4 +80,4 @@ const exec = async () => {
 
     await mongodb_client.close();
 }
-exec();
+//exec();

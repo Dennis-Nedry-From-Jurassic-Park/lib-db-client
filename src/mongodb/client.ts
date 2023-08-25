@@ -1,4 +1,3 @@
-import {Schema} from "mongoose";
 import * as mongoose from "mongoose";
 import {Uri} from "./uri";
 import {emptySchema} from "./schema";
@@ -12,7 +11,7 @@ export class MongoDbClient {
 
     constructor(
         dbName: string,
-        mongoUri: string = Uri.localhost
+        mongoUri: string = Uri.local_host
     ) {
         this.dbName = dbName
         this.mongoUri = mongoUri
