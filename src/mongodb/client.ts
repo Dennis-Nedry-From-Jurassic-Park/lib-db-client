@@ -37,7 +37,6 @@ export class MongoDbClient {
 
     async get_model(modelName: string) {
         return this.models.get(modelName)
-
     }
 
     async create_model(
