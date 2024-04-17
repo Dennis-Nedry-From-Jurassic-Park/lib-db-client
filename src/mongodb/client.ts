@@ -1,6 +1,8 @@
 import * as mongoose from "mongoose";
 import {Uri} from "./uri";
 import {emptySchema} from "./schema";
+import {Model, Mongoose} from "mongoose";
+//import * as Mongoose from "mongoose";
 
 
 export class MongoDbClient {
@@ -42,12 +44,12 @@ export class MongoDbClient {
     async create_model(
         collectionName: string,
         schema: any = emptySchema
-    ): Promise<any> {
+    ): Promise<Model<any>> {
         return this.mongoose.model(collectionName, schema);
     }
 
     async disconnect() {
-        this.mongoose.disconnect()
+        await this.mongoose.disconnect()
     }
 
 }
