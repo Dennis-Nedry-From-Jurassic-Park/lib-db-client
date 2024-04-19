@@ -4,10 +4,12 @@ import {db, host, password, schema, user} from "./pg.constants";
 import stringify from "safe-stable-stringify";
 import {PostgresConnectionOptions} from "typeorm/driver/postgres/PostgresConnectionOptions";
 
+export const pg_connection_url = `postgresql://${user}:${password}@${host}/${db}`
+
 export const PostgresConnectionOptionsDefault: PostgresConnectionOptions = {
     name: "default",
     type: "postgres",
-    url: `postgresql://${user}:${password}@${host}/${db}`,
+    url: pg_connection_url,
     synchronize: false,
     logging: true,
     schema: "public", // для создания таблицы истории миграций
