@@ -17,7 +17,7 @@ export const PostgresConnectionOptionsDefault: PostgresConnectionOptions = {
 
 /**
  * const pg = new PgDataSource(PostgresConnectionOptionsDefault);
- * pg.init().catch((err) => console.log(err));
+ * await pg.initialize()
  * export {pg};
  */
 export class PgDataSource extends DataSource {
@@ -27,10 +27,6 @@ export class PgDataSource extends DataSource {
 
     get data_source() {
         return this;
-    }
-
-    async init(): Promise<any> {
-        await this.initialize();
     }
 
     saveError = async (error: string) => {
