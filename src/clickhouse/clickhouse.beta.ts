@@ -42,5 +42,5 @@ export const clickhouse_beta: ClickHouseClient = createClickHouseClient({
     app: 'app', host: 'localhost', port: 8123, session_id: v4(), debug: true, raw: false
 })
 
-export {ClickHouseClient}
+export type {ClickHouseClient}
 
